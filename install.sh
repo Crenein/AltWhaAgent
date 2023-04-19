@@ -33,4 +33,4 @@ docker run -d \
 --env ISPBRAIN_USER="$user" \
 --env ISPBRAIN_PASSWORD="$password" \
 -v /root/.local/share/mudslide:/usr/src/app/cache \
--v log:/root/AltWha/log crenein/altwhasender:v1.0.1
+-v log:/root/AltWha/log crenein/altwhasender:v1.0.3
