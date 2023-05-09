@@ -28,14 +28,16 @@ apt-get update
 
 apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-mkdir /root/log
+mkdir /root/altwha
+mkdir /root/altwha/$subdomain$account
+mkdir /root/altwha/$subdomain$account/log
 
 # Correr el docker con las variables ingresadas por el usuario
-docker run -d \
+docker run --name $subdomain$account -d \
 --env ISPBRAIN_SUBDOMAIN="$subdomain" \
 --env ISPBRAIN_ACCOUNT="$account" \
 --env ISPBRAIN_USER="$user" \
 --env ISPBRAIN_PASSWORD="$password" \
 --restart=always \
--v /root/.local/share/mudslide:/usr/src/app/cache \
--v /root/log:/opt/AltWha/log crenein/altwhasender:v1.0.8
+-v /root/altwha/$subdomain$account/mudslide:/usr/src/app/cache \
+-v log:/root/altwha/$subdomain$account/log crenein/altwhasender:v1.0.8
