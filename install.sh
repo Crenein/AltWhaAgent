@@ -40,4 +40,4 @@ docker run --name $subdomain$account -d \
 --env ISPBRAIN_PASSWORD="$password" \
 --restart=always \
 -v /root/altwha/$subdomain$account/mudslide:/usr/src/app/cache \
--v /root/altwha/$subdomain$account/log:/opt/AltWha/log crenein/altwhasender:v1.0.9
+-v /root/altwha/$subdomain$account/log:/opt/AltWha/log crenein/altwhasender:v1.1
