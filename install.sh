@@ -26,18 +26,27 @@ echo \
 
 apt-get update
 
-apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin python3-pip
+
+pip3 install --break-system-packages requests-cache
+pip3 install --break-system-packages python-dotenv
 
 mkdir /root/altwha
 mkdir /root/altwha/$subdomain$account
+
+cd /root/altwha/$subdomain$account
+
+git clone https://github.com/Crenein/altwhabase.git /root/altwha/$subdomain$account
+
 mkdir /root/altwha/$subdomain$account/log
 
-# Correr el docker con las variables ingresadas por el usuario
-docker run --name $subdomain$account -d \
---env ISPBRAIN_SUBDOMAIN="$subdomain" \
---env ISPBRAIN_ACCOUNT="$account" \
---env ISPBRAIN_USER="$user" \
---env ISPBRAIN_PASSWORD="$password" \
---restart=always \
--v /root/altwha/$subdomain$account/mudslide:/usr/src/app/cache \
--v /root/altwha/$subdomain$account/log:/opt/AltWha/log crenein/altwhasender:v1.11
+echo "ISPBRAIN_SUBDOMAIN=$subdomain" > /root/altwha/$subdomain$account/.env
+echo "ISPBRAIN_ACCOUNT=$account" >> /root/altwha/$subdomain$account/.env
+echo "ISPBRAIN_USER=$user" >> /root/altwha/$subdomain$account/.env
+echo "ISPBRAIN_PASSWORD=$password" >> /root/altwha/$subdomain$account/.env
+
+# Crear cron job para ejecutar main.py al iniciar el sistema
+(crontab -l 2>/dev/null; echo "@reboot cd /root/altwha/$subdomain$account && python3 main.py") | crontab -
+
+# Login
+docker run -v /root/altwha/$subdomain$account/mudslide:/usr/src/app/cache -it robvanderleek/mudslide login
