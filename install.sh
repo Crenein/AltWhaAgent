@@ -36,7 +36,7 @@ mkdir /root/altwha/$subdomain$account
 
 cd /root/altwha/$subdomain$account
 
-curl -L "https://raw.githubusercontent.com/Crenein/AltWha/refs/heads/master/main.py?token=GHSAT0AAAAAAC3KN7BKP3LD6TPNIXYUL5GI2FMQNUQ" -o main.py
+curl -L "https://raw.githubusercontent.com/Crenein/AltWhaAgent/refs/heads/master/main.py" -o main.py
 
 mkdir /root/altwha/$subdomain$account/log
 
