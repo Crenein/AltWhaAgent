@@ -31,15 +31,12 @@ apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin do
 pip3 install --break-system-packages requests-cache
 pip3 install --break-system-packages python-dotenv
 
-pip3 install requests-cache
-pip3 install python-dotenv
-
 mkdir /root/altwha
 mkdir /root/altwha/$subdomain$account
 
 cd /root/altwha/$subdomain$account
 
-git clone https://github.com/Crenein/altwhabase.git /root/altwha/$subdomain$account
+curl -L "https://raw.githubusercontent.com/Crenein/AltWha/refs/heads/master/main.py?token=GHSAT0AAAAAAC3KN7BKP3LD6TPNIXYUL5GI2FMQNUQ" -o main.py
 
 mkdir /root/altwha/$subdomain$account/log
 
