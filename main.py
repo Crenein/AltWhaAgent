@@ -187,6 +187,7 @@ if __name__ == "__main__":
                         if messages:
                             for message in messages:
                                 send_messages(token, message)
+                                time.sleep(10)
             except Exception as e:
                 error_send_message(token, message['id'])
                 with open('log/error.txt', 'a', encoding='utf-8') as log:
