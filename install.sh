@@ -31,6 +31,9 @@ apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin do
 pip3 install --break-system-packages requests-cache
 pip3 install --break-system-packages python-dotenv
 
+pip3 install requests-cache
+pip3 install python-dotenv
+
 mkdir /root/altwha
 mkdir /root/altwha/$subdomain$account
 
