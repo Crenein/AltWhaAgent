@@ -183,7 +183,7 @@ if __name__ == "__main__":
                 if is_valid_time():
                     token = get_ispb_token()
                     if token:
-                        messages = get_messages(token) + get_noprocess_messages(token)
+                        messages = get_messages(token)
                         if messages:
                             for message in messages:
                                 send_messages(token, message)
